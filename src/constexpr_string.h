@@ -20,6 +20,11 @@ public:
             _data[i] = a_[i];
     }
 
+    constexpr int size() const
+    {
+        return _size;
+    }
+
     constexpr char operator[](std::size_t index_)
     {
         if(index_ < N)
