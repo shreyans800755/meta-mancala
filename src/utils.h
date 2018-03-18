@@ -4,6 +4,25 @@
 #include "constexpr_string.h"
 #include "game_state.h"
 
+#include <iostream>
+
+
+// This struct is only for debugging
+template <class T>
+struct debugger
+{
+    [[deprecated]] constexpr void write()
+    {
+    }
+};
+
+// This function provides debugging functionality
+template <class T>
+constexpr void debug()
+{
+    debugger<T>().write();
+}
+
 template <std::size_t N>
 std::ostream& operator<<(std::ostream &os, const constexpr_string<N> &s)
 {

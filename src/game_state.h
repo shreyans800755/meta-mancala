@@ -18,7 +18,7 @@ public:
     {
     }
 
-    constexpr int board_size() const
+    constexpr std::size_t board_size() const
     {
         return N;
     }
