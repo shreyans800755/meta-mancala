@@ -5,6 +5,8 @@
 
 #include <iostream>
 
+using utils::operator<<;
+
 int main()
 {
     constexpr auto game_state = parse_game_state(get_game_state);

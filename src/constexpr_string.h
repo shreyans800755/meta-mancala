@@ -70,9 +70,18 @@ public:
         return N;
     }
 
-    constexpr std::size_t find_not(const char c) const
+    constexpr std::size_t rfind(const char c) const
     {
-        for(std::size_t i = 0; i < N && i < _size; i++)
+        for(std::size_t i = _size - 1; i >= 0; i--)
+            if(_data[i] == c)
+                return i;
+        return N;
+    }
+
+    constexpr std::size_t find_not(const char c,
+                                   const std::size_t start = 0) const
+    {
+        for(std::size_t i = start; i < N && i < _size; i++)
             if(_data[i] != c)
                 return i;
         return N;
@@ -80,7 +89,7 @@ public:
 
     constexpr std::size_t rfind_not(const char c) const
     {
-        for(std::size_t i = N - 1; i >= 0; i--)
+        for(std::size_t i = _size - 1; i >= 0; i--)
             if(_data[i] != c)
                 return i;
         return N;
