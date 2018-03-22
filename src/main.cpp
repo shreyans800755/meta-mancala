@@ -9,7 +9,13 @@ using utils::operator<<;
 
 int main()
 {
-    constexpr auto game_state = parse_game_state(get_game_state);
-    std::cout << game_state << std::endl;
+    constexpr auto cur_state = parse_game_state(get_game_state);
+    if constexpr(index == -1)
+    {
+        std::cout << cur_state << std::endl;
+        return 0;
+    }
+    constexpr auto new_state = cur_state.update(index, player);
+    std::cout << new_state << std::endl;
     return 0;
 }

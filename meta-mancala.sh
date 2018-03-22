@@ -4,12 +4,12 @@ clear
 
 IFS=
 
-input='None'
-chance=1
+input='-1'
+player=2
 
 while :
 do
-    g++ src/main.cpp --std=c++1z -o meta-mancala -DINPUT="$input" -DCHANCE="$chance"
+    g++ src/main.cpp --std=c++1z -DINPUT="$input" -DPLAYER="$player" -o meta-mancala
 
     output=$?
     if [ $output -ne 0 ]; then
@@ -25,12 +25,12 @@ do
     echo $current_state >> current_state.txt
     echo ")\"" >> current_state.txt
 
-    if [ $chance -eq 1 ]; then
-        chance=2
+    if [ $player -eq 1 ]; then
+        player=2
     else
-        chance=1
+        player=1
     fi
-    echo "Player " $chance ": "
+    echo "Player " $player ": "
     read -n2 input
 done
 

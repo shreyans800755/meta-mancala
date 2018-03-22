@@ -2,6 +2,8 @@
 #define GAME_STATE_H
 
 #include <array>
+#include <tuple>
+
 
 template<std::size_t N>
 class state
@@ -38,6 +40,16 @@ public:
     {
         static_assert(P == 1 || P == 2);
         return P == 1 ? _pot1 : _pot2;
+    }
+
+    constexpr auto update(const int index, const int player) const
+    {
+        auto data = std::make_tuple(pot<1>(), score<1>(), pot<2>(), score<2>());
+        state<N> a(std::get<0>(data),
+                   std::get<2>(data),
+                   std::get<1>(data),
+                   std::get<3>(data));
+        return a;
     }
 
 private:

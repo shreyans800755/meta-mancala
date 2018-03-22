@@ -9,4 +9,7 @@ constexpr auto get_game_state = []() constexpr
         return game_state;
     };
 
+constexpr int index = INPUT;
+constexpr int player = PLAYER;
+
 #endif
